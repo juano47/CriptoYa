@@ -13,6 +13,14 @@ class CryptoRepositoryImpl(
         return responseToResource(newsRemoteDataSource.getBitcoinPrices())
     }
 
+    override suspend fun getBitcoinPrice(): Double {
+        val response = responseToResource(newsRemoteDataSource.getBitcoinPrices())
+        if (response is Resource.Success) {
+            return response.data!!.decrypto.totalAsk
+        }
+        return 0.0
+    }
+
     private fun responseToResource(response: Response<BitcoinPriceResponse>): Resource<BitcoinPriceResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->

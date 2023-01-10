@@ -1,23 +1,20 @@
-package com.delaiglesia.criptoya
+package com.delaiglesia.criptoya.presentation
 
 import android.os.Bundle
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.viewinterop.AndroidView
 import com.delaiglesia.criptoya.presentation.compose.BaseScreen
 import com.delaiglesia.criptoya.ui.theme.CriptoYaTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var factory: CryptoViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column() {
-                        BaseScreen()
+                        BaseScreen(factory)
                     }
 
                 }
