@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class Bitso(
     @SerializedName("ask")
-    val ask: Int,
+    val ask: Double,
     @SerializedName("bid")
-    val bid: Int,
+    val bid: Double,
     @SerializedName("time")
-    val time: Int,
+    val time: Double,
     @SerializedName("totalAsk")
-    val totalAsk: Int,
+    val totalAsk: Double,
     @SerializedName("totalBid")
-    val totalBid: Int
+    val totalBid: Double
 )

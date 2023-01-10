@@ -11,7 +11,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun BaseScreen(
     factory: CryptoViewModelFactory,
     modifier: Modifier = Modifier,
-    converterViewModel: CryptoViewModel = viewModel(factory = factory)
+    cryptoViewModel: CryptoViewModel = viewModel(factory = factory)
 ) {
-    TopScreen()
+
+    cryptoViewModel.getBitcoinPrice()
+    cryptoViewModel.getEtherPrice()
+    val bitcoinPrice = cryptoViewModel.bitcoinPrice.value
+    val ethereumPrice = cryptoViewModel.ethereumPrice.value
+    TopScreen(
+        bitcoinPrice = bitcoinPrice,
+        ethereumPrice = ethereumPrice,
+        modifier = modifier)
+
 }

@@ -3,23 +3,23 @@ package com.delaiglesia.criptoya.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class BitcoinPriceResponse(
+data class CryptoPriceResponse(
     @SerializedName("bitex")
-    val bitex: Bitex,
+    val bitex: Bitex?,
     @SerializedName("bitso")
-    val bitso: Bitso,
+    val bitso: Bitso?,
     @SerializedName("calypso")
-    val calypso: Calypso,
+    val calypso: Calypso?,
     @SerializedName("decrypto")
-    val decrypto: Decrypto,
+    val decrypto: Decrypto?,
     @SerializedName("fiwind")
-    val fiwind: Fiwind,
+    val fiwind: Fiwind?,
     @SerializedName("fluyez")
-    val fluyez: Fluyez,
+    val fluyez: Fluyez?,
     @SerializedName("letsbit")
-    val letsbit: Letsbit,
+    val letsbit: Letsbit?,
     @SerializedName("tiendacrypto")
-    val tiendacrypto: Tiendacrypto,
+    val tiendacrypto: Tiendacrypto?,
     @SerializedName("vitawallet")
-    val vitawallet: Vitawallet
+    val vitawallet: Vitawallet?
 )

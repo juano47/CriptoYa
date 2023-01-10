@@ -1,15 +1,14 @@
 package com.delaiglesia.criptoya.data.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Bitex(
     @SerializedName("ask")
-    val ask: Int,
+    val ask: Double,
     @SerializedName("bid")
-    val bid: Int,
+    val bid: Double,
     @SerializedName("time")
-    val time: Int,
+    val time: Double,
     @SerializedName("totalAsk")
     val totalAsk: Double,
     @SerializedName("totalBid")

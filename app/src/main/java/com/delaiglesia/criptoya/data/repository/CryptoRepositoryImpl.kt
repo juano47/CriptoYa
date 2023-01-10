@@ -1,6 +1,6 @@
 package com.delaiglesia.criptoya.data.repository
 
-import com.delaiglesia.criptoya.data.model.BitcoinPriceResponse
+import com.delaiglesia.criptoya.data.model.CryptoPriceResponse
 import com.delaiglesia.criptoya.data.repository.dataSource.RemoteDataSource
 import com.delaiglesia.newsapp.data.utils.Resource
 import retrofit2.Response
@@ -9,19 +9,11 @@ class CryptoRepositoryImpl(
     private val newsRemoteDataSource: RemoteDataSource,
 ) : CryptoRepository {
 
-    override suspend fun getBitcoinPrices(): Resource<BitcoinPriceResponse> {
-        return responseToResource(newsRemoteDataSource.getBitcoinPrices())
+    override suspend fun getCryptoPrices(crypto: String): Resource<CryptoPriceResponse> {
+        return responseToResource(newsRemoteDataSource.getCryptoPrices(crypto))
     }
 
-    override suspend fun getBitcoinPrice(): Double {
-        val response = responseToResource(newsRemoteDataSource.getBitcoinPrices())
-        if (response is Resource.Success) {
-            return response.data!!.decrypto.totalAsk
-        }
-        return 0.0
-    }
-
-    private fun responseToResource(response: Response<BitcoinPriceResponse>): Resource<BitcoinPriceResponse> {
+    private fun responseToResource(response: Response<CryptoPriceResponse>): Resource<CryptoPriceResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)

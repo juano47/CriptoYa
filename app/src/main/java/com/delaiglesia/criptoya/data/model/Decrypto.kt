@@ -9,7 +9,7 @@ data class Decrypto(
     @SerializedName("bid")
     val bid: Double,
     @SerializedName("time")
-    val time: Int,
+    val time: Double,
     @SerializedName("totalAsk")
     val totalAsk: Double,
     @SerializedName("totalBid")

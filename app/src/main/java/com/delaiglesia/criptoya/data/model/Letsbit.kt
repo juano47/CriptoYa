@@ -7,11 +7,11 @@ data class Letsbit(
     @SerializedName("ask")
     val ask: Double,
     @SerializedName("bid")
-    val bid: Int,
+    val bid: Double,
     @SerializedName("time")
-    val time: Int,
+    val time: Double,
     @SerializedName("totalAsk")
     val totalAsk: Double,
     @SerializedName("totalBid")
-    val totalBid: Int
+    val totalBid: Double
 )
