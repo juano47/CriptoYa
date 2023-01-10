@@ -5,6 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.delaiglesia.criptoya.data.model.DollarPricesResponse
 import com.delaiglesia.criptoya.data.repository.CryptoRepository
 import com.delaiglesia.newsapp.data.utils.Resource
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +16,7 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
 
     val bitcoinPrice: MutableState<Double> = mutableStateOf(0.0)
     val ethereumPrice: MutableState<Double> = mutableStateOf(0.0)
+    val dollarPrices: MutableState<DollarPricesResponse?> = mutableStateOf(null)
 
     fun getBitcoinPrice() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -40,6 +42,21 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
                     }
                     is Resource.Error -> {
                         ethereumPrice.value = 0.0
+                    }
+                }
+            }
+        }
+    }
+
+    fun getDollarPrices() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getDollarPrices().let {
+                when (it) {
+                    is Resource.Success -> {
+                        dollarPrices.value = it.data
+                    }
+                    is Resource.Error -> {
+                        dollarPrices.value = null
                     }
                 }
             }

@@ -16,21 +16,24 @@ fun PriceCard(
     modifier: Modifier = Modifier,
     price: Double,
     name: String,
-    icon: Int,
-    currency: String
+    iconId: Int? = null,
+    currency: String? = null,
 ) {
 
     Column {
         Row {
             Column() {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        painter = painterResource(id = icon),
-                        contentDescription = name
-                    )
+                    if (iconId != null) {
+                        Icon(
+                            painter = painterResource(id = iconId),
+                            contentDescription = name
+                        )
+                    }
                     Text(
                         text = name,
-                        modifier = Modifier.padding(start = 5.dp))
+                        modifier = Modifier.padding(start = 5.dp)
+                    )
                 }
             }
         }
@@ -38,10 +41,13 @@ fun PriceCard(
         Row {
             Column() {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = currency)
+                    if (currency != null) {
+                        Text(text = currency)
+                    }
                     Text(
                         text = price.toString(),
-                        modifier = Modifier.padding(start = 5.dp))
+                        modifier = Modifier.padding(start = 5.dp)
+                    )
                 }
             }
         }
@@ -54,7 +60,7 @@ fun PriceCardPreview() {
     PriceCard(
         price = 100.000,
         name = "Bitcoin",
-        icon = R.drawable.bitcoin,
+        iconId = R.drawable.bitcoin,
         currency = "US$"
     )
 }

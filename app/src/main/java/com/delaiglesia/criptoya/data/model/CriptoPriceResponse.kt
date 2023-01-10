@@ -3,7 +3,7 @@ package com.delaiglesia.criptoya.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CryptoPriceResponse(
+data class CryptoPricesResponse(
     @SerializedName("bitex")
     val bitex: Bitex?,
     @SerializedName("bitso")

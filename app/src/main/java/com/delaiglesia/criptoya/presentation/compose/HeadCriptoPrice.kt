@@ -17,13 +17,13 @@ fun HeadCryptoPrice(
         PriceCard(
             price = bitcoinPrice,
             name = "Bitcoin",
-            icon = R.drawable.bitcoin,
+            iconId = R.drawable.bitcoin,
             currency = "US$"
         )
         PriceCard(
             price = ethereumPrice,
             name = "Ethereum",
-            icon = R.drawable.ethereum,
+            iconId = R.drawable.ethereum,
             currency = "US$"
         )
     }
