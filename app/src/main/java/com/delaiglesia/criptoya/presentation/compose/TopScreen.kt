@@ -1,4 +1,4 @@
-package com.delaiglesia.criptoya.compose
+package com.delaiglesia.criptoya.presentation.compose
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
