@@ -1,7 +1,9 @@
 package com.delaiglesia.unitconverterapp
 
 import android.app.Application
+import android.util.Log
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +20,7 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
     val ethereumPrice: MutableState<Double> = mutableStateOf(0.0)
     val dollarPrices: MutableState<DollarPricesResponse?> = mutableStateOf(null)
     val usdtPrice: MutableState<Double> = mutableStateOf(0.0)
+    val isRefreshing by mutableStateOf(false)
 
     fun getBitcoinPrice() {
         viewModelScope.launch(Dispatchers.IO) {
