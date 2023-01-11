@@ -21,6 +21,7 @@ import com.delaiglesia.criptoya.presentation.CryptoViewModelFactory
 import com.delaiglesia.unitconverterapp.CryptoViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.delaiglesia.criptoya.data.model.DollarPricesResponse
+import com.delaiglesia.criptoya.presentation.utils.Currency
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -37,10 +38,10 @@ fun BaseScreen(
     cryptoViewModel.getDollarPrices()
     cryptoViewModel.getUsdtPrice()
     val prices = mapOf(
-        "BTC" to cryptoViewModel.bitcoinPrice.value,
-        "ETH" to cryptoViewModel.ethereumPrice.value,
-        "USD" to cryptoViewModel.dollarPrices.value,
-        "USDT" to cryptoViewModel.usdtPrice.value
+        Currency.BTC to cryptoViewModel.bitcoinPrice.value,
+        Currency.ETH to cryptoViewModel.ethereumPrice.value,
+        Currency.USD to cryptoViewModel.dollarPrices.value,
+        Currency.USDT to cryptoViewModel.usdtPrice.value
     )
 
     val isRefreshing = cryptoViewModel.isRefreshing
@@ -59,17 +60,17 @@ fun BaseScreen(
                     color = Color.White, thickness = 1.dp,
                     modifier = modifier.padding(0.dp, 20.dp))
                 HeadCryptoPrice(
-                    bitcoinPrice = (prices.get("BTC") ?: 0.0) as Double,
-                    ethereumPrice = (prices.get("ETH") ?: 0.0) as Double,
+                    bitcoinPrice = (prices[Currency.BTC] ?: 0.0) as Double,
+                    ethereumPrice = (prices[Currency.ETH] ?: 0.0) as Double,
                 )
                 Divider(
                     color = Color.White, thickness = 1.dp,
                     modifier = modifier.padding(0.dp, 20.dp))
-                HeadDollarPrice(dollarPrices = prices.get("USD") as DollarPricesResponse?)
+                HeadDollarPrice(dollarPrices = prices[Currency.USD] as DollarPricesResponse?)
                 Divider(
                     color = Color.White, thickness = 1.dp,
                     modifier = modifier.padding(0.dp, 20.dp))
-                ExchangePrice(price = prices.get("USDT") as Double)
+                ExchangePrice(price = prices[Currency.USDT] as Double)
                 Divider(
                     color = Color.White, thickness = 1.dp,
                     modifier = modifier.padding(0.dp, 20.dp))
@@ -120,7 +121,7 @@ fun CustomViewPullRefreshView(
     }
 }
 
-fun refresh(context: Context, cryptoViewModel: CryptoViewModel, prices: Map<String, Any?>) {
+fun refresh(context: Context, cryptoViewModel: CryptoViewModel, prices: Map<Currency, Any?>) {
     cryptoViewModel.getBitcoinPrice()
     cryptoViewModel.getEtherPrice()
     cryptoViewModel.getDollarPrices()
