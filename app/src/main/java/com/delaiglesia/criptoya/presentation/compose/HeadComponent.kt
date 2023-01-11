@@ -18,7 +18,7 @@ import com.delaiglesia.criptoya.R
 fun HeadComponent() {
     Row(
         Modifier
-            .padding(20.dp)
+            .padding(20.dp, 40.dp)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
@@ -27,7 +27,7 @@ fun HeadComponent() {
         Text(
             text = "CriptoYa",
             fontFamily = FontFamily(Font(R.font.nunitonedium)),
-            fontSize = 40.sp
+            fontSize = 45.sp
         )
         Image(painter = painterResource(id = R.drawable.arflag), contentDescription = "Flag")
     }

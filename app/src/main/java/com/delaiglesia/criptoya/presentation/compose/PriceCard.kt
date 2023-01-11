@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.delaiglesia.criptoya.R
 
 @Composable
@@ -32,6 +34,8 @@ fun PriceCard(
                     }
                     Text(
                         text = name,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(start = 5.dp)
                     )
                 }
@@ -46,6 +50,7 @@ fun PriceCard(
                     }
                     Text(
                         text = price.toString(),
+                        fontSize = 20.sp,
                         modifier = Modifier.padding(start = 5.dp)
                     )
                 }

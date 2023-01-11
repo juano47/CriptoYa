@@ -21,12 +21,14 @@ fun BaseScreen(
     cryptoViewModel.getBitcoinPrice()
     cryptoViewModel.getEtherPrice()
     cryptoViewModel.getDollarPrices()
+    cryptoViewModel.getUsdtPrice()
     val bitcoinPrice = cryptoViewModel.bitcoinPrice.value
     val ethereumPrice = cryptoViewModel.ethereumPrice.value
     val dollarPrices = cryptoViewModel.dollarPrices.value
+    val usdtPrice = cryptoViewModel.usdtPrice.value
 
     HeadComponent()
-    Column(modifier = modifier.padding(40.dp, 0.dp)) {
+    Column(modifier = modifier.padding(20.dp, 0.dp)) {
         Divider(
             color = Color.White, thickness = 1.dp,
             modifier = modifier.padding(0.dp, 20.dp))
@@ -38,5 +40,12 @@ fun BaseScreen(
             color = Color.White, thickness = 1.dp,
             modifier = modifier.padding(0.dp, 20.dp))
         HeadDollarPrice(dollarPrices = dollarPrices)
+        Divider(
+            color = Color.White, thickness = 1.dp,
+            modifier = modifier.padding(0.dp, 20.dp))
+        ExchangePrice(price = usdtPrice)
+        Divider(
+            color = Color.White, thickness = 1.dp,
+            modifier = modifier.padding(0.dp, 20.dp))
     }
 }

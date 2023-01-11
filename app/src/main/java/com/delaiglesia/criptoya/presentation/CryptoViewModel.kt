@@ -17,6 +17,7 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
     val bitcoinPrice: MutableState<Double> = mutableStateOf(0.0)
     val ethereumPrice: MutableState<Double> = mutableStateOf(0.0)
     val dollarPrices: MutableState<DollarPricesResponse?> = mutableStateOf(null)
+    val usdtPrice: MutableState<Double> = mutableStateOf(0.0)
 
     fun getBitcoinPrice() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -57,6 +58,21 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
                     }
                     is Resource.Error -> {
                         dollarPrices.value = null
+                    }
+                }
+            }
+        }
+    }
+
+    fun getUsdtPrice() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getUsdtPrice().let {
+                when (it) {
+                    is Resource.Success -> {
+                        usdtPrice.value = it.data?.totalBid ?: 0.0
+                    }
+                    is Resource.Error -> {
+                        usdtPrice.value = 0.0
                     }
                 }
             }
