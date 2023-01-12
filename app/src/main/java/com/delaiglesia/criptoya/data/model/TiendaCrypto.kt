@@ -5,17 +5,17 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class Calypso(
+data class TiendaCrypto(
     @PrimaryKey(autoGenerate = true)
-    val idCalypso: Int = 0,
+    val idTiendaCrypto: Int = 0,
     @SerializedName("ask")
-    val askCalypso: Double?,
+    val askTiendaCrypto: Double?,
     @SerializedName("bid")
-    val bidCalypso: Double?,
+    val bidTiendaCrypto: Double?,
     @SerializedName("time")
-    val timeCalypso: Double?,
+    val timeTiendaCrypto: Double?,
     @SerializedName("totalAsk")
-    val totalAskCalypso: Double?,
+    val totalAskTiendaCrypto: Double?,
     @SerializedName("totalBid")
-    val totalBidCalypso: Double?
+    val totalBidTiendaCrypto: Double?
 )

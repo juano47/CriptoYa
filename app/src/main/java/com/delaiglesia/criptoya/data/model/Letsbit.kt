@@ -1,17 +1,21 @@
 package com.delaiglesia.criptoya.data.model
 
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Letsbit(
+    @PrimaryKey(autoGenerate = true)
+    val idLetsbit: Int = 0,
     @SerializedName("ask")
-    val ask: Double,
+    val askLetsbit: Double?,
     @SerializedName("bid")
-    val bid: Double,
+    val bidLetsbit: Double?,
     @SerializedName("time")
-    val time: Double,
+    val timeLetsbit: Double?,
     @SerializedName("totalAsk")
-    val totalAsk: Double,
+    val totalAskLetsbit: Double?,
     @SerializedName("totalBid")
-    val totalBid: Double
+    val totalBidLetsbit: Double?
 )

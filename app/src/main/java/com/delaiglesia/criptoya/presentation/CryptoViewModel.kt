@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.delaiglesia.criptoya.data.model.DollarPricesResponse
 import com.delaiglesia.criptoya.data.repository.CryptoRepository
+import com.delaiglesia.criptoya.data.utils.Currency
+import com.delaiglesia.criptoya.presentation.utils.Action
 import com.delaiglesia.newsapp.data.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,12 +23,12 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
     val usdtPrice: MutableState<Double> = mutableStateOf(0.0)
     val isRefreshing by mutableStateOf(false)
 
-    fun getBitcoinPrice() {
+    fun getBitcoinPrice(action: Action) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getCryptoPrices("btc").let {
+            repository.getCryptoPrices(Currency.BTC, action).let {
                 when (it) {
                     is Resource.Success -> {
-                        bitcoinPrice.value = it.data?.decrypto?.totalAsk ?: 0.0
+                        bitcoinPrice.value = it.data?.decrypto?.totalAskDecrypto ?: 0.0
                     }
                     is Resource.Error -> {
                         bitcoinPrice.value = 0.0
@@ -36,12 +38,12 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
         }
     }
 
-    fun getEtherPrice() {
+    fun getEtherPrice(action: Action) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getCryptoPrices("eth").let {
+            repository.getCryptoPrices(Currency.ETH, action).let {
                 when (it) {
                     is Resource.Success -> {
-                        ethereumPrice.value = it.data?.tiendacrypto?.totalAsk ?: 0.0
+                        ethereumPrice.value = it.data?.tiendaCrypto?.totalAskTiendaCrypto ?: 0.0
                     }
                     is Resource.Error -> {
                         ethereumPrice.value = 0.0
@@ -51,9 +53,9 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
         }
     }
 
-    fun getDollarPrices() {
+    fun getDollarPrices(action: Action) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getDollarPrices().let {
+            repository.getDollarPrices(action).let {
                 when (it) {
                     is Resource.Success -> {
                         dollarPrices.value = it.data
@@ -66,9 +68,9 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
         }
     }
 
-    fun getUsdtPrice() {
+    fun getUsdtPrice(action: Action) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getUsdtPrice().let {
+            repository.getUsdtPrice(action).let {
                 when (it) {
                     is Resource.Success -> {
                         usdtPrice.value = it.data?.totalBid ?: 0.0
@@ -78,6 +80,15 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
                     }
                 }
             }
+        }
+    }
+
+    fun updatePrices() {
+        viewModelScope.launch(Dispatchers.IO) {
+            getBitcoinPrice(Action.UPDATE)
+            getEtherPrice(Action.UPDATE)
+            getDollarPrices(Action.UPDATE)
+            getUsdtPrice(Action.UPDATE)
         }
     }
 }

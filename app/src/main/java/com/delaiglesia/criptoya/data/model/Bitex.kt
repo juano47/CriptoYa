@@ -1,16 +1,21 @@
 package com.delaiglesia.criptoya.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Bitex(
+    @PrimaryKey(autoGenerate = true)
+    val idBitex: Int = 0,
     @SerializedName("ask")
-    val ask: Double,
+    val askBitex: Double?,
     @SerializedName("bid")
-    val bid: Double,
+    val bidBitex: Double?,
     @SerializedName("time")
-    val time: Double,
+    val timeBitex: Double?,
     @SerializedName("totalAsk")
-    val totalAsk: Double,
+    val totalAskBitex: Double?,
     @SerializedName("totalBid")
-    val totalBid: Double
+    val totalBidBitex: Double?
 )

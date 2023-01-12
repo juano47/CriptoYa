@@ -1,5 +1,5 @@
 package com.delaiglesia.criptoya.presentation.utils
 
-enum class Currency {
-    BTC, ETH, USDT, USD
+enum class Action {
+    GET, UPDATE
 }

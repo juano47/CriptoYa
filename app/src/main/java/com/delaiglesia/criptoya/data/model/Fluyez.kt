@@ -1,17 +1,21 @@
 package com.delaiglesia.criptoya.data.model
 
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Fluyez(
+    @PrimaryKey(autoGenerate = true)
+    val idFluyez: Int = 0,
     @SerializedName("ask")
-    val ask: Double,
+    val askFluyez: Double?,
     @SerializedName("bid")
-    val bid: Double,
+    val bidFluyez: Double?,
     @SerializedName("time")
-    val time: Double,
+    val timeFluyez: Double?,
     @SerializedName("totalAsk")
-    val totalAsk: Double,
+    val totalAskFluyez: Double?,
     @SerializedName("totalBid")
-    val totalBid: Double
+    val totalBidFluyez: Double?
 )

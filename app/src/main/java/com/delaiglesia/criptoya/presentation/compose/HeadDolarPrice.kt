@@ -18,22 +18,30 @@ fun HeadDollarPrice(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         if (dollarPrices != null) {
-            PriceCard(
-                price = dollarPrices.mep,
-                name = "MEP",
-            )
-            PriceCard(
-                price = dollarPrices.ccl,
-                name = "CCL",
-            )
-            PriceCard(
-                price = dollarPrices.ccb,
-                name = "CRYPTO",
-            )
-            PriceCard(
-                price = dollarPrices.blue,
-                name = "BLUE",
-            )
+            dollarPrices.mep?.let {
+                PriceCard(
+                    price = it,
+                    name = "MEP",
+                )
+            }
+            dollarPrices.ccl?.let {
+                PriceCard(
+                    price = it,
+                    name = "CCL",
+                )
+            }
+            dollarPrices.ccb?.let {
+                PriceCard(
+                    price = it,
+                    name = "CRYPTO",
+                )
+            }
+            dollarPrices.blue?.let {
+                PriceCard(
+                    price = it,
+                    name = "BLUE",
+                )
+            }
         }
     }
 }

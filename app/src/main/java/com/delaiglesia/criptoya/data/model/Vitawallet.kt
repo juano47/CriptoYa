@@ -1,17 +1,21 @@
 package com.delaiglesia.criptoya.data.model
 
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Vitawallet(
+    @PrimaryKey(autoGenerate = true)
+    val idVitawallet: Int = 0,
     @SerializedName("ask")
-    val ask: Double,
+    val askVitawallet: Double?,
     @SerializedName("bid")
-    val bid: Double,
+    val bidVitawallet: Double?,
     @SerializedName("time")
-    val time: Double,
+    val timeVitawallet: Double?,
     @SerializedName("totalAsk")
-    val totalAsk: Double,
+    val totalAskVitawallet: Double?,
     @SerializedName("totalBid")
-    val totalBid: Double
+    val totalBidVitawallet: Double?
 )
