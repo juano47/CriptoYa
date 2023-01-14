@@ -13,39 +13,39 @@ data class CryptoPricesResponse(
     @SerializedName("crypto")
     var crypto: Currency,
 
-    @Embedded
+    @Embedded(prefix = "bitex_")
     @SerializedName("bitex")
-    val bitex: Bitex?,
+    val bitex: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "bitso_")
     @SerializedName("bitso")
-    val bitso: Bitso?,
+    val bitso: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "calypso_")
     @SerializedName("calypso")
-    val calypso: Calypso?,
+    val calypso: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "decrypto_")
     @SerializedName("decrypto")
-    val decrypto: Decrypto?,
+    val decrypto: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "fiwind_")
     @SerializedName("fiwind")
-    val fiwind: Fiwind?,
+    val fiwind: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "fluyez_")
     @SerializedName("fluyez")
-    val fluyez: Fluyez?,
+    val fluyez: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "letsbit_")
     @SerializedName("letsbit")
-    val letsbit: Letsbit?,
+    val letsbit: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "tiendacrypto_")
     @SerializedName("tiendacrypto")
-    val tiendaCrypto: TiendaCrypto?,
+    val tiendaCrypto: Exchange?,
 
-    @Embedded
+    @Embedded(prefix = "vitawallet_")
     @SerializedName("vitawallet")
-    val vitawallet: Vitawallet?
+    val vitawallet: Exchange?
 )

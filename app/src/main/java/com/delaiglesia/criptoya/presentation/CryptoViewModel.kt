@@ -1,4 +1,4 @@
-package com.delaiglesia.unitconverterapp
+package com.delaiglesia.criptoya.presentation
 
 import android.app.Application
 import androidx.compose.runtime.MutableState
@@ -28,7 +28,7 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
             repository.getCryptoPrices(Currency.BTC, action).let {
                 when (it) {
                     is Resource.Success -> {
-                        bitcoinPrice.value = it.data?.decrypto?.totalAskDecrypto ?: 0.0
+                        bitcoinPrice.value = it.data?.decrypto?.totalAsk ?: 0.0
                     }
                     is Resource.Error -> {
                         bitcoinPrice.value = 0.0
@@ -43,7 +43,7 @@ class CryptoViewModel(private val app: Application, private val repository: Cryp
             repository.getCryptoPrices(Currency.ETH, action).let {
                 when (it) {
                     is Resource.Success -> {
-                        ethereumPrice.value = it.data?.tiendaCrypto?.totalAskTiendaCrypto ?: 0.0
+                        ethereumPrice.value = it.data?.tiendaCrypto?.totalAsk ?: 0.0
                     }
                     is Resource.Error -> {
                         ethereumPrice.value = 0.0
